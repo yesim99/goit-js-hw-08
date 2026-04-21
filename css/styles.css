@@ -1,26 +1,42 @@
-.gallery {
+/*.gallery {
     display: flex;
         flex-wrap: wrap;
         gap: 24px;
         list-style: none;
-        margin-left: 156px;
-        margin-right: 156px;
-        justify-content: space-around;
+         justify-content: center;
+         
     
 }
 .container {
     width: 1440px;
     margin: 0 auto;
+  margin: 24px 156px;
 }
 
-.gallery-image {
+.gallery img {
     width: 100%;
-    display: block;
+    height:100%;
+    object-fit:cover;
 
-}
+}*/
 .basicLightbox img {
     width: 1112px;
     height: 640px;
     margin: 28px 164px;
     
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 sütun */
+    gap:24px;
+    margin: 24px 156px;
+    list-style-type: none;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
