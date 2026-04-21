@@ -71,7 +71,7 @@ const gallery = document.querySelector(".gallery");
 const markup = images.map((image) =>  `
   <li class ="gallery-item">
   <a class = "gallery-link" href ="${image.original}">
-   <img src="${image.preview}" alt="${image.description}">
+   <img class = "gallery-image" src="${image.preview}" alt="${image.description}">
    </a>
   </li>`
 )
@@ -80,8 +80,8 @@ const markup = images.map((image) =>  `
 gallery.insertAdjacentHTML("beforeend", markup);
 
 
-document.querySelectorAll('.gallery-link').forEach(a => {
-    a.addEventListener('click', function (event) {
+document.querySelectorAll('.gallery-link').forEach(link => {
+    link.addEventListener('click', function (event) {
         event.preventDefault();//indirmeyi engeller.
         const image = event.currentTarget.querySelector('img');
          const largeImageURL = image.dataset.source;

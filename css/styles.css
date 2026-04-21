@@ -1,16 +1,22 @@
 .gallery {
     display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    list-style: none;
-    margin-left: 156px;
-    margin-right: 156px;
-    justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 24px;
+        list-style: none;
+        margin-left: 156px;
+        margin-right: 156px;
+        justify-content: space-around;
+    
+}
+.container {
+    width: 1440px;
+    margin: 0 auto;
 }
 
-.gallery img {
+.gallery-image {
     width: 100%;
     display: block;
+
 }
 .basicLightbox img {
     width: 1112px;
