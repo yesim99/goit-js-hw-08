@@ -1,16 +1,16 @@
 /*.gallery {
     display: flex;
         flex-wrap: wrap;
-        gap: 24px;
+        gap: 24px
         list-style: none;
+        margin: 24px 156px;
          justify-content: center;
+        width: calc((100% - 24px) / 3);
          
     
 }
 .container {
-    width: 1440px;
     margin: 0 auto;
-  margin: 24px 156px;
 }
 
 .gallery img {
