@@ -71,7 +71,7 @@ const gallery = document.querySelector(".gallery");
 const markup = images.map((image) =>  `
   <li class ="gallery-item">
   <a class = "gallery-link" href ="${image.original}">
-   <img class = "gallery-image" src="${image.preview}" alt="${image.description}">
+   <img class = "gallery-image" src="${image.preview}" alt="${image.description}" data-source = "${image.original}">
    </a>
   </li>`
 )
@@ -80,36 +80,35 @@ const markup = images.map((image) =>  `
 gallery.insertAdjacentHTML("beforeend", markup);
 
 
-document.querySelectorAll('.gallery-link').forEach(link => {
-    link.addEventListener('click', function (event) {
-        event.preventDefault();//indirmeyi engeller.
-        const image = event.currentTarget.querySelector('img');
-         const largeImageURL = image.dataset.source;
-     });
-});
+//document.querySelectorAll('.gallery-link').forEach(link => {
+  //  link.addEventListener('click', function (event) {
+ //       event.preventDefault();//indirmeyi engeller.
+   //     const image = event.currentTarget.querySelector('img');
+    //     const largeImageURL = image.dataset.source;
+  //   });
+//});
  
 
 gallery.addEventListener("click", selectImage);
 function selectImage(event) {
-    if (!event.target.classList.contains('gallery-image')) return;
-        
-}
+  event.preventDefault();//indirmeyi engeller.
 
-const largeImageURL = event.target.dataset.source;//yukarıda da var yazılaması gerekiyor mu sor.
+  if (!event.target.classList.contains('gallery-image')) return;
+  
+  const largeImageURL = event.target.dataset.source;//yukarıda da var yazılaması gerekiyor mu sor.
+  const description = event.target.alt;
 
 const instance = basicLightbox.create(`
-    <img src="${largeImageURL}" alt = ${description}>
-  `);// src ye original olarak mı eklemem gerekiyor?
-
+    <img src="${largeImageURL}" alt = "${description}">`,
+  {
+    onShow: (instance) => {document.addEventListener("keydown", handleKeyDown);},
+    onClose: (instance) => {document.removeEventListener('keydown', handleKeyDown);},
+  }
+);
 const handleKeyDown = (Esc) => {
     if (Esc.key === 'Escape') {
         instance.close();
     }
 };
-document.addEventListener("keydown", handleKeyDown);
-
- onClose: (instance) => {
-      document.removeEventListener('keydown', handleKeyDown);
-    }
-
-  instance.show();
+}
+instance.show();
