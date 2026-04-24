@@ -97,6 +97,10 @@ function selectImage(event) {
   
   const largeImageURL = event.target.dataset.source;//yukarıda da var yazılaması gerekiyor mu sor.
   const description = event.target.alt;
+  const handleKeyDown = (Esc) => {
+    if (Esc.key === 'Escape') {
+        instance.close();
+  }
 
 const instance = basicLightbox.create(`
     <img src="${largeImageURL}" alt = "${description}">`,
@@ -105,10 +109,6 @@ const instance = basicLightbox.create(`
     onClose: (instance) => {document.removeEventListener('keydown', handleKeyDown);},
   }
 );
-const handleKeyDown = (Esc) => {
-    if (Esc.key === 'Escape') {
-        instance.close();
-    }
+  instance.show();
 };
 }
-instance.show();
