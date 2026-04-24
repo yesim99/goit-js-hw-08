@@ -87,7 +87,7 @@ gallery.insertAdjacentHTML("beforeend", markup);
     //     const largeImageURL = image.dataset.source;
   //   });
 //});
- 
+
 
 gallery.addEventListener("click", selectImage);
 function selectImage(event) {
@@ -98,9 +98,10 @@ function selectImage(event) {
   const largeImageURL = event.target.dataset.source;//yukarıda da var yazılaması gerekiyor mu sor.
   const description = event.target.alt;
   const handleKeyDown = (Esc) => {
-    if (Esc.key === 'Escape') {
-        instance.close();
+  if (Esc.key === 'Escape') {
+    instance.close();
   }
+}
 
 const instance = basicLightbox.create(`
     <img src="${largeImageURL}" alt = "${description}">`,
@@ -111,4 +112,4 @@ const instance = basicLightbox.create(`
 );
   instance.show();
 };
-}
+
